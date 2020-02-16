@@ -43,7 +43,7 @@ volatile unsigned int neg;
 volatile unsigned int dist;
 
 // for frequencies
-volatile unsigned int count = C6; // 16MHz / 256 / 440Hz / 2
+volatile unsigned int count = C6; // 16MHz / 128 / note
 
 volatile char cont = 0; // continuous mode
 volatile char bpress = 1; // last button press, 0 = depressed
@@ -51,7 +51,7 @@ volatile char bpress = 1; // last button press, 0 = depressed
 char String[48] = "";
 
 void timer0_init() {
-	OCR0A = count; // desired count for 440Hz
+	OCR0A = count; // desired count for default note 
 	TCCR0A |= 0x42; // set CTC mode
 	TCCR0B |= 0x03; // clk/64
 	TCNT0 = 0;
